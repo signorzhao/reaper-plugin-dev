@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(ReaperPluginExample)
+project(ReaperMutedTracksToggle)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -47,15 +47,15 @@ elseif(WIN32)
     # Visual Studio will handle linking standard system libraries like user32, gdi32, etc.
 endif()
 
-# Create the shared library (plugin)
-add_library(${PROJECT_NAME} SHARED ${SOURCE_FILES})
+# Create the shared library (plugin) with explicit name
+add_library(ReaperMutedTracksToggle SHARED ${SOURCE_FILES})
 
 # Link platform-specific libraries
 if(APPLE)
-    target_link_libraries(${PROJECT_NAME} ${LINK_LIBS})
+    target_link_libraries(ReaperMutedTracksToggle ${LINK_LIBS})
 endif()
 
 # Installation steps (optional, but good practice)
-install(TARGETS ${PROJECT_NAME}
+install(TARGETS ReaperMutedTracksToggle
     LIBRARY DESTINATION ${CMAKE_BINARY_DIR}
 ) 

@@ -139,13 +139,13 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
         static gaccel_register_t accelerator;
         accelerator.accel.cmd = g_toggleMutedTracksCmdId;
-        accelerator.desc = "IAN: Toggle visibility of muted tracks";
+        accelerator.desc = "Toggle visibility of muted tracks";
         plugin_register("gaccel", &accelerator);
 
         // Register the command hook
         plugin_register("hookcommand", (void*)hook_command);
         
-        ShowConsoleMsg("IAN's Muted Track Toggler plugin loaded!\n");
+        ShowConsoleMsg("ReaperMutedTracksToggle plugin loaded successfully!\n");
 
         return 1;
     }
