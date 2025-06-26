@@ -128,12 +128,11 @@ jobs:
           name: reaper_enz_ReaperTools-win64
           path: .
 
-      # 如有 macOS 产物可在此处添加下载步骤
-      # - name: 下载 macOS dylib
-      #   uses: actions/download-artifact@v4
-      #   with:
-      #     name: reaper_enz_ReaperTools-macos
-      #     path: .
+      - name: 下载 macOS dylib
+        uses: actions/download-artifact@v4
+        with:
+          name: reaper_enz_ReaperTools-macos
+          path: .
 
       - name: 克隆发布库
         uses: actions/checkout@v4
@@ -147,14 +146,15 @@ jobs:
           mkdir -p publish_repo/releases/${{ steps.get_version.outputs.version }}
           cp reaper_enz_ReaperTools.dll publish_repo/releases/${{ steps.get_version.outputs.version }}/
 
+      - name: 复制 macOS dylib 到发布库
+        run: |
+          cp reaper_enz_ReaperTools.dylib publish_repo/releases/${{ steps.get_version.outputs.version }}/
+
       - name: 列出发布库目录
         run: ls -l publish_repo/releases
 
       - name: 列出新版本目录内容
         run: ls -l publish_repo/releases/${{ steps.get_version.outputs.version }}
-
-      # 如有 macOS dylib 可在此处复制
-      # cp reaper_enz_ReaperTools.dylib publish_repo/releases/${{ steps.get_version.outputs.version }}/
 
       - name: 提交并推送到发布库
         run: |
