@@ -6,7 +6,7 @@
 2. 点击 **Import repositories**
 3. 添加以下 URL：
    ```
-   https://signorzhao.github.io/reaper-plugin-repo/reapack/index.xml
+   https://raw.githubusercontent.com/signorzhao/reaper-plugin-repo/main/reapack/index.xml
    ```
 4. 点击 **OK** 保存
 5. 在 ReaPack 包管理器中找到 **enz_ReaperTools** 插件

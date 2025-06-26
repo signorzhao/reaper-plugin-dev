@@ -21,13 +21,15 @@ url_mac = f"https://github.com/{repo}/releases/download/{tag}/{mac_file}"
 index_file = "reapack/index.xml"
 
 # 创建 XML 结构
-root = ET.Element("reapack", version="1")
+root = ET.Element("reapack", version="1", xmlns="http://reapack.com/repository", xmlns_reapack="http://reapack.com/repository")
 category = ET.SubElement(root, "category", name="Plugins")
 plugin = ET.SubElement(category, "reapack:reaperplugin",
                       name="enz_ReaperTools",
                       version=version,
                       desc="Toggle visibility of muted tracks",
-                      date=datetime.now().strftime("%Y-%m-%d"))
+                      date=datetime.now().strftime("%Y-%m-%d"),
+                      author="enz",
+                      type="effect")
 
 # 添加平台特定的下载链接
 ET.SubElement(plugin, "source", file=url_win, platform="win64")

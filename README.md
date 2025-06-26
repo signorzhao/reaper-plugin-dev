@@ -14,7 +14,7 @@
 1. 在 REAPER 中安装 ReaPack 扩展
 2. 打开 **Extensions** → **ReaPack** → **Manage repositories**
 3. 点击 **Import repositories**
-4. 添加仓库地址：`https://signorzhao.github.io/reaper-plugin-repo/reapack/index.xml`
+4. 添加仓库地址：`https://raw.githubusercontent.com/signorzhao/reaper-plugin-repo/main/reapack/index.xml`
 5. 搜索 "enz_ReaperTools" 并安装
 
 ### 方法2：从 GitHub Releases 下载
