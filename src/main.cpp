@@ -1,6 +1,7 @@
 #include "reaper_plugin.h"
 
 // Define pointers for REAPER API functions
+// test: trigger auto publish
 void (*ShowConsoleMsg)(const char *msg);
 int (*CountTracks)(ReaProject* proj);
 MediaTrack* (*GetTrack)(ReaProject* proj, int trackidx);
