@@ -29,7 +29,9 @@ jobs:
         
       - name: Copy reapack to docs
         run: |
-          cp -r reapack docs/
+          if [ -d "reapack" ]; then
+            cp -r reapack docs/ || mkdir -p docs/reapack && cp reapack/index.xml docs/reapack/
+          fi
         
       - name: Create .nojekyll file
         run: |
