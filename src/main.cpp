@@ -256,6 +256,8 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
         static gaccel_register_t accelerator;
         accelerator.accel.cmd = enz_toggleMutedTracksCmdId;
+        accelerator.accel.fVirt = 0x04; // FSHIFT
+        accelerator.accel.key = 'H';
         accelerator.desc = "enz_Toggle visibility of muted tracks";
         plugin_register("gaccel", &accelerator);
 
@@ -265,6 +267,8 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
         static gaccel_register_t accelerator2;
         accelerator2.accel.cmd = enz_toggleSelectedTrackFXFloatCmdId;
+        accelerator2.accel.fVirt = 0x04; // FSHIFT
+        accelerator2.accel.key = 'F';
         accelerator2.desc = "enz_Toggle float for selected track FX";
         plugin_register("gaccel", &accelerator2);
 

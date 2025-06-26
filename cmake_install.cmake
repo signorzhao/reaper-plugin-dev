@@ -1,4 +1,4 @@
-# Install script for directory: /Users/ianzhao/Desktop/reaper-plugin-project
+# Install script for directory: /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,18 +39,18 @@ endif()
 
 if(CMAKE_INSTALL_COMPONENT STREQUAL "Unspecified" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
-   "/Users/ianzhao/Desktop/reaper-plugin-project/reaper_enz_ReaperTools.dylib")
+   "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/reaper_enz_ReaperTools.dylib")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
   if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
   endif()
-  file(INSTALL DESTINATION "/Users/ianzhao/Desktop/reaper-plugin-project" TYPE SHARED_LIBRARY FILES "/Users/ianzhao/Desktop/reaper-plugin-project/reaper_enz_ReaperTools.dylib")
-  if(EXISTS "$ENV{DESTDIR}/Users/ianzhao/Desktop/reaper-plugin-project/reaper_enz_ReaperTools.dylib" AND
-     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/ianzhao/Desktop/reaper-plugin-project/reaper_enz_ReaperTools.dylib")
+  file(INSTALL DESTINATION "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev" TYPE SHARED_LIBRARY FILES "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/reaper_enz_ReaperTools.dylib")
+  if(EXISTS "$ENV{DESTDIR}/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/reaper_enz_ReaperTools.dylib" AND
+     NOT IS_SYMLINK "$ENV{DESTDIR}/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/reaper_enz_ReaperTools.dylib")
     if(CMAKE_INSTALL_DO_STRIP)
-      execute_process(COMMAND "/usr/bin/strip" -x "$ENV{DESTDIR}/Users/ianzhao/Desktop/reaper-plugin-project/reaper_enz_ReaperTools.dylib")
+      execute_process(COMMAND "/usr/bin/strip" -x "$ENV{DESTDIR}/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/reaper_enz_ReaperTools.dylib")
     endif()
   endif()
 endif()
@@ -61,7 +61,7 @@ endif()
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
 if(CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/ianzhao/Desktop/reaper-plugin-project/install_local_manifest.txt"
+  file(WRITE "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/install_local_manifest.txt"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()
 if(CMAKE_INSTALL_COMPONENT)
@@ -77,6 +77,6 @@ else()
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
-  file(WRITE "/Users/ianzhao/Desktop/reaper-plugin-project/${CMAKE_INSTALL_MANIFEST}"
+  file(WRITE "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
 endif()

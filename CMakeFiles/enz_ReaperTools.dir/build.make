@@ -53,10 +53,10 @@ RM = /Applications/CMake.app/Contents/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/ianzhao/Desktop/reaper-plugin-project
+CMAKE_SOURCE_DIR = /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/ianzhao/Desktop/reaper-plugin-project
+CMAKE_BINARY_DIR = /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev
 
 # Include any dependencies generated for this target.
 include CMakeFiles/enz_ReaperTools.dir/depend.make
@@ -75,86 +75,86 @@ CMakeFiles/enz_ReaperTools.dir/codegen:
 CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o: CMakeFiles/enz_ReaperTools.dir/flags.make
 CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o: src/main.cpp
 CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o: CMakeFiles/enz_ReaperTools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o -c /Users/ianzhao/Desktop/reaper-plugin-project/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o -c /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/src/main.cpp
 
 CMakeFiles/enz_ReaperTools.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/enz_ReaperTools.dir/src/main.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Desktop/reaper-plugin-project/src/main.cpp > CMakeFiles/enz_ReaperTools.dir/src/main.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/src/main.cpp > CMakeFiles/enz_ReaperTools.dir/src/main.cpp.i
 
 CMakeFiles/enz_ReaperTools.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/enz_ReaperTools.dir/src/main.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Desktop/reaper-plugin-project/src/main.cpp -o CMakeFiles/enz_ReaperTools.dir/src/main.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/src/main.cpp -o CMakeFiles/enz_ReaperTools.dir/src/main.cpp.s
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o: CMakeFiles/enz_ReaperTools.dir/flags.make
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o: vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o: CMakeFiles/enz_ReaperTools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o -c /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o -c /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.i
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.s
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/flags.make
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o: vendor/WDL-main/WDL/swell/swell-misc-generic.cpp
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o -c /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o -c /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.i
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.s
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/flags.make
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o: vendor/WDL-main/WDL/swell/swell-menu-generic.cpp
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o -c /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o -c /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.i
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.s
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/flags.make
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o: vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o -c /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o -c /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.i
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.s
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/flags.make
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o: vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o: CMakeFiles/enz_ReaperTools.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o -c /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o -MF CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o.d -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o -c /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp > CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.i
 
 CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp -o CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.s
 
 # Object files for target enz_ReaperTools
 enz_ReaperTools_OBJECTS = \
@@ -176,7 +176,7 @@ reaper_enz_ReaperTools.dylib: CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL
 reaper_enz_ReaperTools.dylib: CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o
 reaper_enz_ReaperTools.dylib: CMakeFiles/enz_ReaperTools.dir/build.make
 reaper_enz_ReaperTools.dylib: CMakeFiles/enz_ReaperTools.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library reaper_enz_ReaperTools.dylib"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX shared library reaper_enz_ReaperTools.dylib"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/enz_ReaperTools.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -188,6 +188,6 @@ CMakeFiles/enz_ReaperTools.dir/clean:
 .PHONY : CMakeFiles/enz_ReaperTools.dir/clean
 
 CMakeFiles/enz_ReaperTools.dir/depend:
-	cd /Users/ianzhao/Desktop/reaper-plugin-project && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ianzhao/Desktop/reaper-plugin-project /Users/ianzhao/Desktop/reaper-plugin-project /Users/ianzhao/Desktop/reaper-plugin-project /Users/ianzhao/Desktop/reaper-plugin-project /Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/enz_ReaperTools.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev /Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/CMakeFiles/enz_ReaperTools.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/enz_ReaperTools.dir/depend
 

@@ -8,12 +8,12 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "/Users/ianzhao/Desktop/reaper-plugin-project/src/main.cpp" "CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o.d"
-  "/Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o.d"
-  "/Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o.d"
-  "/Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o.d"
-  "/Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o.d"
-  "/Users/ianzhao/Desktop/reaper-plugin-project/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o.d"
+  "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/src/main.cpp" "CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/src/main.cpp.o.d"
+  "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-appstub-generic.cpp.o.d"
+  "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-generic-gdk.cpp.o.d"
+  "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-menu-generic.cpp.o.d"
+  "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-misc-generic.cpp.o.d"
+  "/Users/ianzhao/Documents/reaper_programming/reaper-plugin-dev/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o" "gcc" "CMakeFiles/enz_ReaperTools.dir/vendor/WDL-main/WDL/swell/swell-wnd-generic.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
