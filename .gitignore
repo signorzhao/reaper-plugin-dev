@@ -5,3 +5,4 @@
 # IDE-specific
 .vscode/
 .idea/ 
+*.dylib
