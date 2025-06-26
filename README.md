@@ -10,27 +10,33 @@
 
 ## 安装方法
 
-### 方法1：直接下载（推荐）
-访问我们的下载页面：https://signorzhao.github.io/reaper-plugin-project/
-
-### 方法2：从 GitHub Releases 下载
-- **Windows**: [reaper_enz_ReaperTools.dll](https://github.com/signorzhao/reaper-plugin-project/releases/latest/download/reaper_enz_ReaperTools.dll)
-- **macOS**: [reaper_enz_ReaperTools.dylib](https://github.com/signorzhao/reaper-plugin-project/releases/latest/download/reaper_enz_ReaperTools.dylib)
-
-### 方法3：通过 ReaPack 自动安装
+### 🚀 方法1：ReaPack 自动安装（推荐）
 1. 在 REAPER 中安装 ReaPack 扩展
-2. 打开 Actions → ReaPack → Browse packages
-3. 点击 "Import repositories"
-4. 添加仓库地址：`https://raw.githubusercontent.com/signorzhao/reaper-plugin-project/main/reaper_plugin_list.xml`
+2. 打开 **Extensions** → **ReaPack** → **Manage repositories**
+3. 点击 **Import repositories**
+4. 添加仓库地址：`https://signorzhao.github.io/reaper-plugin-repo/reapack/index.xml`
 5. 搜索 "enz_ReaperTools" 并安装
 
-**注意**: 如果遇到网络连接问题，请使用方法1或方法2。
+### 方法2：从 GitHub Releases 下载
+- **Windows**: [reaper_enz_ReaperTools.dll](https://github.com/signorzhao/reaper-plugin-repo/releases/latest/download/reaper_enz_ReaperTools.dll)
+- **macOS**: [reaper_enz_ReaperTools.dylib](https://github.com/signorzhao/reaper-plugin-repo/releases/latest/download/reaper_enz_ReaperTools.dylib)
 
 ### 安装步骤
 - **Windows**: 将 `reaper_enz_ReaperTools.dll` 复制到 `%APPDATA%\REAPER\UserPlugins\`
 - **macOS**: 将 `reaper_enz_ReaperTools.dylib` 复制到 `~/Library/Application Support/REAPER/UserPlugins/`
 - 重启 REAPER
 
-## 自动构建
-每次发布新版本时，GitHub Actions 会自动编译 Windows 和 macOS 平台的插件文件。
+## 自动构建和发布
+- ✅ 自动构建 Windows / macOS 插件
+- ✅ 自动创建 GitHub Release
+- ✅ 自动更新 ReaPack 索引
+- ✅ 支持一键订阅更新
+
+## 开发信息
+- 使用 CMake 构建系统
+- 支持跨平台编译
+- 集成 GitHub Actions CI/CD
+- 支持 ReaPack 分发
+
+详细订阅说明请查看 [REAPACK.md](REAPACK.md)
 
