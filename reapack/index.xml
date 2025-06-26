@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<reapack version="1" xmlns="http://reapack.com/repository" xmlns:reapack="http://reapack.com/repository">
+<reapack version="1">
   <category name="Plugins">
-    <reapack:reaperplugin name="enz_ReaperTools" version="1.0.0" desc="Toggle visibility of muted tracks" date="2025-06-26" author="enz" type="effect">
-      <source file="https://raw.githubusercontent.com/signorzhao/reaper-plugin-repo/main/reapack/reaper_enz_ReaperTools.dll" platform="win64"/>
-      <source file="https://raw.githubusercontent.com/signorzhao/reaper-plugin-repo/main/reapack/reaper_enz_ReaperTools.dylib" platform="osx64"/>
+    <reapack:reaperplugin name="enz_ReaperTools" version="1.0.0" desc="Toggle visibility of muted tracks" date="2025-06-26">
+      <source file="https://github.com/signorzhao/reaper-plugin-repo/releases/download/v1.0.0/reaper_enz_ReaperTools.dll" platform="win64"/>
+      <source file="https://github.com/signorzhao/reaper-plugin-repo/releases/download/v1.0.0/reaper_enz_ReaperTools.dylib" platform="osx64"/>
     </reapack:reaperplugin>
   </category>
 </reapack> 
