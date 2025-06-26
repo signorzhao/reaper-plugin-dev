@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>enz_ReaperTools - REAPER 插件</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #007acc;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        .download-section {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        .download-btn {
+            display: inline-block;
+            background: #007acc;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .download-btn:hover {
+            background: #005a9e;
+        }
+        .instructions {
+            background: #e8f4fd;
+            padding: 15px;
+            border-left: 4px solid #007acc;
+            margin: 20px 0;
+        }
+        code {
+            background: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>enz_ReaperTools</h1>
+        <p>REAPER 实用工具插件集合</p>
+    </div>
+
+    <h2>功能特性</h2>
+    <ul>
+        <li><strong>enz_Toggle visibility of muted tracks</strong> - 切换静音轨道的显示/隐藏状态</li>
+        <li><strong>enz_Toggle float for selected track FX</strong> - 智能切换所选轨道FX插件的悬浮窗口</li>
+    </ul>
+
+    <h2>下载插件</h2>
+    <div class="download-section">
+        <h3>最新版本: v1.0.0</h3>
+        <p>选择适合你系统的版本：</p>
+        <a href="https://github.com/signorzhao/reaper-plugin-project/releases/download/v1.0.0/reaper_enz_ReaperTools.dll" class="download-btn">Windows 64-bit (.dll)</a>
+        <a href="https://github.com/signorzhao/reaper-plugin-project/releases/download/v1.0.0/reaper_enz_ReaperTools.dylib" class="download-btn">macOS (.dylib)</a>
+    </div>
+
+    <h2>安装说明</h2>
+    <div class="instructions">
+        <h3>手动安装：</h3>
+        <p><strong>Windows:</strong> 将 <code>reaper_enz_ReaperTools.dll</code> 复制到 <code>%APPDATA%\REAPER\UserPlugins\</code></p>
+        <p><strong>macOS:</strong> 将 <code>reaper_enz_ReaperTools.dylib</code> 复制到 <code>~/Library/Application Support/REAPER/UserPlugins/</code></p>
+        <p>然后重启 REAPER 即可。</p>
+    </div>
+
+    <h2>ReaPack 订阅（如果网络允许）</h2>
+    <div class="instructions">
+        <p>如果你能访问 GitHub，可以通过 ReaPack 自动安装：</p>
+        <ol>
+            <li>在 REAPER 中安装 ReaPack 扩展</li>
+            <li>打开 Actions → ReaPack → Browse packages</li>
+            <li>点击 "Import repositories"</li>
+            <li>添加仓库地址：<code>https://raw.githubusercontent.com/signorzhao/reaper-plugin-project/main/reaper_plugin_list.xml</code></li>
+            <li>搜索 "enz_ReaperTools" 并安装</li>
+        </ol>
+    </div>
+
+    <h2>使用方法</h2>
+    <p>安装后，在 REAPER 的 Actions 列表（Actions → Show action list）中搜索 "enz_" 即可找到相关功能。</p>
+
+    <hr>
+    <p><small>项目地址：<a href="https://github.com/signorzhao/reaper-plugin-project">GitHub</a></small></p>
+</body>
+</html> 
