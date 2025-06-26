@@ -1,0 +1,7 @@
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/enz_ReaperTools.dir
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/edit_cache.dir
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/rebuild_cache.dir
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/list_install_components.dir
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/install.dir
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/install/local.dir
+/Users/ianzhao/Desktop/reaper-plugin-project/CMakeFiles/install/strip.dir
