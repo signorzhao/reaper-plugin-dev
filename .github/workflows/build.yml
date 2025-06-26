@@ -84,6 +84,16 @@ jobs:
         name: reaper_enz_ReaperTools-macos
         path: dist/
     
+    - name: Create Tag (if not exists)
+      run: |
+        git fetch --tags
+        if ! git rev-parse ${{ steps.version.outputs.version }} >/dev/null 2>&1; then
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git tag ${{ steps.version.outputs.version }}
+          git push origin ${{ steps.version.outputs.version }}
+        fi
+    
     - name: Create Release
       uses: softprops/action-gh-release@v1
       with:
