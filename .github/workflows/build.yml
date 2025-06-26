@@ -103,4 +103,54 @@ jobs:
       uses: ad-m/github-push-action@v0.6.0
       with:
         branch: gh-pages
-        github_token: ${{ secrets.GITHUB_TOKEN }} 
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+
+  push-to-publish-repo:
+    needs: create-release
+    runs-on: ubuntu-latest
+    steps:
+      - name: 获取版本号
+        id: get_version
+        run: |
+          if [ "${{ github.event_name }}" = "push" ]; then
+            echo "version=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+          else
+            echo "version=${{ github.event.inputs.version }}" >> $GITHUB_OUTPUT
+          fi
+
+      - name: 下载 Windows DLL
+        uses: actions/download-artifact@v4
+        with:
+          name: reaper_enz_ReaperTools-win64
+          path: .
+
+      # 如有 macOS 产物可在此处添加下载步骤
+      # - name: 下载 macOS dylib
+      #   uses: actions/download-artifact@v4
+      #   with:
+      #     name: reaper_enz_ReaperTools-macos
+      #     path: .
+
+      - name: 克隆发布库
+        uses: actions/checkout@v4
+        with:
+          repository: signorzhao/reapack_repo
+          token: ${{ secrets.PUBLISH_TOKEN }}
+          path: publish_repo
+
+      - name: 复制 DLL 到发布库
+        run: |
+          mkdir -p publish_repo/releases/${{ steps.get_version.outputs.version }}
+          cp reaper_enz_ReaperTools.dll publish_repo/releases/${{ steps.get_version.outputs.version }}/
+
+      # 如有 macOS dylib 可在此处复制
+      # cp reaper_enz_ReaperTools.dylib publish_repo/releases/${{ steps.get_version.outputs.version }}/
+
+      - name: 提交并推送到发布库
+        run: |
+          cd publish_repo
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add .
+          git commit -m "Auto publish ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
+          git push 
