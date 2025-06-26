@@ -147,6 +147,12 @@ jobs:
           mkdir -p publish_repo/releases/${{ steps.get_version.outputs.version }}
           cp reaper_enz_ReaperTools.dll publish_repo/releases/${{ steps.get_version.outputs.version }}/
 
+      - name: 列出发布库目录
+        run: ls -l publish_repo/releases
+
+      - name: 列出新版本目录内容
+        run: ls -l publish_repo/releases/${{ steps.get_version.outputs.version }}
+
       # 如有 macOS dylib 可在此处复制
       # cp reaper_enz_ReaperTools.dylib publish_repo/releases/${{ steps.get_version.outputs.version }}/
 
