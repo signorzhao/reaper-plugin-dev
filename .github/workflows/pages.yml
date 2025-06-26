@@ -27,6 +27,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
+      - name: Copy reapack to docs
+        run: |
+          cp -r reapack docs/
+        
       - name: Create .nojekyll file
         run: |
           touch docs/.nojekyll
