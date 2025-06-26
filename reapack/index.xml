@@ -1,9 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<reapack version="1" xmlns="http://reapack.com/repository">
-  <category name="Plugins">
-    <reaperplugin name="enz_ReaperTools" version="1.0.0" desc="Toggle visibility of muted tracks" author="enz" type="effect">
-      <source file="https://github.com/signorzhao/reaper-plugin-repo/releases/download/v1.0.0/reaper_enz_ReaperTools.dll" platform="win64"/>
-      <source file="https://github.com/signorzhao/reaper-plugin-repo/releases/download/v1.0.0/reaper_enz_ReaperTools.dylib" platform="osx64"/>
-    </reaperplugin>
+<index version="1" name="enz_ReaperTools Repository">
+  <metadata>
+    <name>enz_ReaperTools</name>
+    <description>REAPER实用工具插件集合，包含轨道管理和FX控制功能</description>
+    <author>enz</author>
+    <version>1.0.0</version>
+    <changelog>初始版本发布，包含静音轨道切换和FX悬浮窗口控制功能</changelog>
+    <website>https://github.com/signorzhao/reaper-plugin-repo</website>
+    <donate></donate>
+    <screenshot></screenshot>
+    <license>MIT</license>
+  </metadata>
+
+  <category name="Utility">
+    <reapack name="enz_ReaperTools" type="effect" version="1.0.0" author="enz">
+      <description>REAPER实用工具插件集合，包含轨道管理和FX控制功能</description>
+      <link rel="website">https://github.com/signorzhao/reaper-plugin-repo</link>
+      <link rel="donate"></link>
+      <link rel="screenshot"></link>
+      <link rel="license">MIT</link>
+      
+      <!-- Windows 64-bit -->
+      <source location="https://github.com/signorzhao/reaper-plugin-repo/releases/download/v1.0.0/reaper_enz_ReaperTools.dll" platform="win64" />
+      
+      <!-- macOS Universal -->
+      <source location="https://github.com/signorzhao/reaper-plugin-repo/releases/download/v1.0.0/reaper_enz_ReaperTools.dylib" platform="osx" />
+      
+      <changelog version="1.0.0">
+        初始版本发布
+        - 实现静音轨道可见性切换功能
+        - 实现FX悬浮窗口智能切换功能
+        - 统一所有功能使用"enz_"前缀命名
+      </changelog>
+    </reapack>
   </category>
-</reapack> 
+</index> 
