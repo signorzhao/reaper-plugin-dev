@@ -24,7 +24,7 @@ int (*TrackFX_GetParamFromIdent)(MediaTrack* track, int fx, const char* ident_st
 double (*TrackFX_GetParam)(MediaTrack* track, int fx, int param, double* minval, double* maxval);
 bool (*TrackFX_GetOffline)(MediaTrack* track, int fx);
 bool (*TrackFX_GetOpen)(MediaTrack* track, int fx);
-HWND (*TrackFX_GetFloatingWindow)(MediaTrack* track, int fx);
+void* (*TrackFX_GetFloatingWindow)(MediaTrack* track, int fx);
 
 // Global variable for our command ID
 static int enz_toggleMutedTracksCmdId = 0;
@@ -105,7 +105,7 @@ void ToggleMutedTracksVisibility()
         }
     }
 
-    Undo_EndBlock("Toggle Muted Tracks Visibility", -1);
+    Undo_EndBlock("enz_Toggle visibility of muted tracks", -1);
     TrackList_AdjustWindows(true); // Update both TCP and MCP
 }
 
@@ -194,7 +194,7 @@ void Enz_ToggleSelectedTrackFXFloat(bool force_open)
         }
     }
     
-    Undo_EndBlock("Toggle Selected Track FX Float", -1);
+    Undo_EndBlock("enz_Toggle float for selected track FX", -1);
 }
 
 // Hook function that REAPER calls for our action
@@ -255,8 +255,8 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
         if (!enz_toggleMutedTracksCmdId) return 0;
 
         static gaccel_register_t accelerator;
-        accelerator.accel.cmd = g_toggleMutedTracksCmdId;
-        accelerator.desc = "IAN: Toggle visibility of muted tracks";
+        accelerator.accel.cmd = enz_toggleMutedTracksCmdId;
+        accelerator.desc = "enz_Toggle visibility of muted tracks";
         plugin_register("gaccel", &accelerator);
 
         // Register the second action
@@ -265,13 +265,13 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
         static gaccel_register_t accelerator2;
         accelerator2.accel.cmd = enz_toggleSelectedTrackFXFloatCmdId;
-        accelerator2.desc = "ENZ: Toggle float for selected track FX";
+        accelerator2.desc = "enz_Toggle float for selected track FX";
         plugin_register("gaccel", &accelerator2);
 
         // Register the command hook
         plugin_register("hookcommand", (void*)hook_command);
         
-        ShowConsoleMsg("IAN's Muted Track Toggler plugin loaded!\n");
+        ShowConsoleMsg("enz_ReaperTools plugin loaded!\n");
 
         return 1;
     }
