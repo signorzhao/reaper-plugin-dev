@@ -13,9 +13,22 @@ int (*plugin_register)(const char* name, void* infostruct);
 int (*CountTrackMediaItems)(MediaTrack* track);
 MediaItem* (*GetTrackMediaItem)(MediaTrack* track, int itemidx);
 double (*GetMediaItemInfo_Value)(MediaItem* item, const char* parmname);
+void (*TrackFX_SetOpen)(MediaTrack* track, int fx, bool open);
+void (*TrackFX_Show)(MediaTrack* track, int fx, int show);
+
+// === 新增API指针 ===
+MediaTrack* (*GetSelectedTrack)(ReaProject* proj, int seltrackidx);
+int (*TrackFX_GetCount)(MediaTrack* track);
+bool (*TrackFX_GetEnabled)(MediaTrack* track, int fx);
+int (*TrackFX_GetParamFromIdent)(MediaTrack* track, int fx, const char* ident_str);
+double (*TrackFX_GetParam)(MediaTrack* track, int fx, int param, double* minval, double* maxval);
+bool (*TrackFX_GetOffline)(MediaTrack* track, int fx);
+bool (*TrackFX_GetOpen)(MediaTrack* track, int fx);
+HWND (*TrackFX_GetFloatingWindow)(MediaTrack* track, int fx);
 
 // Global variable for our command ID
-static int g_toggleMutedTracksCmdId = 0;
+static int enz_toggleMutedTracksCmdId = 0;
+static int enz_toggleSelectedTrackFXFloatCmdId = 0;
 
 // Helper function to check if all items on a track are muted
 bool AllItemsAreMuted(MediaTrack* track)
@@ -96,13 +109,107 @@ void ToggleMutedTracksVisibility()
     TrackList_AdjustWindows(true); // Update both TCP and MCP
 }
 
+// === 新功能实现 ===
+// 智能切换：如果大部分FX悬浮窗口是关闭的，就全部打开；如果大部分是打开的，就全部关闭
+void Enz_ToggleSelectedTrackFXFloat(bool force_open)
+{
+    Undo_BeginBlock();
+    
+    // 如果force_open为true，直接全部打开
+    if (force_open) {
+        int sel_idx = 0;
+        MediaTrack* track = nullptr;
+        while ((track = GetSelectedTrack(nullptr, sel_idx++))) {
+            int fx_count = TrackFX_GetCount(track);
+            for (int fx = 0; fx < fx_count; ++fx) {
+                // 只处理启用且未bypass且未offline的FX
+                if (!TrackFX_GetEnabled(track, fx)) continue;
+                if (TrackFX_GetOffline && TrackFX_GetOffline(track, fx)) continue;
+                int bypass_param = TrackFX_GetParamFromIdent(track, fx, ":bypass");
+                if (bypass_param >= 0) {
+                    double minv=0, maxv=0;
+                    double val = TrackFX_GetParam(track, fx, bypass_param, &minv, &maxv);
+                    if (val >= 0.5) continue; // bypass状态跳过
+                }
+                // 打开悬浮窗口
+                TrackFX_Show(track, fx, 3); // showflag=3 for show floating window
+            }
+        }
+    } else {
+        // 智能切换：统计当前悬浮窗口状态，决定是全部打开还是全部关闭
+        int total_valid_fx = 0;
+        int open_fx_count = 0;
+        
+        // 第一遍：统计有效FX数量和已打开的悬浮窗口数量
+        int sel_idx = 0;
+        MediaTrack* track = nullptr;
+        while ((track = GetSelectedTrack(nullptr, sel_idx++))) {
+            int fx_count = TrackFX_GetCount(track);
+            for (int fx = 0; fx < fx_count; ++fx) {
+                // 只处理启用且未bypass且未offline的FX
+                if (!TrackFX_GetEnabled(track, fx)) continue;
+                if (TrackFX_GetOffline && TrackFX_GetOffline(track, fx)) continue;
+                int bypass_param = TrackFX_GetParamFromIdent(track, fx, ":bypass");
+                if (bypass_param >= 0) {
+                    double minv=0, maxv=0;
+                    double val = TrackFX_GetParam(track, fx, bypass_param, &minv, &maxv);
+                    if (val >= 0.5) continue; // bypass状态跳过
+                }
+                
+                total_valid_fx++;
+                // 检查悬浮窗口是否已打开（通过检查是否有float window）
+                if (TrackFX_GetFloatingWindow && TrackFX_GetFloatingWindow(track, fx)) {
+                    open_fx_count++;
+                }
+            }
+        }
+        
+        // 决定操作：如果大部分是关闭的，就全部打开；否则全部关闭
+        bool should_open = (open_fx_count * 2 < total_valid_fx); // 如果打开的少于一半，就全部打开
+        
+        // 第二遍：执行操作
+        sel_idx = 0;
+        track = nullptr;
+        while ((track = GetSelectedTrack(nullptr, sel_idx++))) {
+            int fx_count = TrackFX_GetCount(track);
+            for (int fx = 0; fx < fx_count; ++fx) {
+                // 只处理启用且未bypass且未offline的FX
+                if (!TrackFX_GetEnabled(track, fx)) continue;
+                if (TrackFX_GetOffline && TrackFX_GetOffline(track, fx)) continue;
+                int bypass_param = TrackFX_GetParamFromIdent(track, fx, ":bypass");
+                if (bypass_param >= 0) {
+                    double minv=0, maxv=0;
+                    double val = TrackFX_GetParam(track, fx, bypass_param, &minv, &maxv);
+                    if (val >= 0.5) continue; // bypass状态跳过
+                }
+                
+                if (should_open) {
+                    TrackFX_Show(track, fx, 3); // showflag=3 for show floating window
+                } else {
+                    // 尝试多种方法关闭悬浮窗口
+                    TrackFX_Show(track, fx, 2); // 方法1: showflag=2
+                    TrackFX_SetOpen(track, fx, false); // 方法2: 关闭所有窗口
+                }
+            }
+        }
+    }
+    
+    Undo_EndBlock("Toggle Selected Track FX Float", -1);
+}
+
 // Hook function that REAPER calls for our action
 static bool hook_command(int commandId, int flag)
 {
-    if (commandId == g_toggleMutedTracksCmdId)
+    if (commandId == enz_toggleMutedTracksCmdId)
     {
         ToggleMutedTracksVisibility();
-        return true; // Command was handled
+        return true;
+    }
+    if (commandId == enz_toggleSelectedTrackFXFloatCmdId)
+    {
+        // 智能切换：根据当前状态决定全部打开或全部关闭
+        Enz_ToggleSelectedTrackFXFloat(false);
+        return true;
     }
     return false;
 }
@@ -132,20 +239,39 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
         GET_FUNC(CountTrackMediaItems);
         GET_FUNC(GetTrackMediaItem);
         GET_FUNC(GetMediaItemInfo_Value);
+        GET_FUNC(TrackFX_SetOpen);
+        GET_FUNC(TrackFX_Show);
+        GET_FUNC(GetSelectedTrack);
+        GET_FUNC(TrackFX_GetCount);
+        GET_FUNC(TrackFX_GetEnabled);
+        GET_FUNC(TrackFX_GetParamFromIdent);
+        GET_FUNC(TrackFX_GetParam);
+        GET_FUNC(TrackFX_GetOffline);
+        GET_FUNC(TrackFX_GetOpen);
+        GET_FUNC(TrackFX_GetFloatingWindow);
 
         // Register the action
-        g_toggleMutedTracksCmdId = plugin_register("command_id", (void*)"ToggleMutedTracksVisibility");
-        if (!g_toggleMutedTracksCmdId) return 0;
+        enz_toggleMutedTracksCmdId = plugin_register("command_id", (void*)"enz_ToggleMutedTracksVisibility");
+        if (!enz_toggleMutedTracksCmdId) return 0;
 
         static gaccel_register_t accelerator;
         accelerator.accel.cmd = g_toggleMutedTracksCmdId;
-        accelerator.desc = "Toggle visibility of muted tracks";
+        accelerator.desc = "IAN: Toggle visibility of muted tracks";
         plugin_register("gaccel", &accelerator);
+
+        // Register the second action
+        enz_toggleSelectedTrackFXFloatCmdId = plugin_register("command_id", (void*)"enz_ToggleSelectedTrackFXFloat");
+        if (!enz_toggleSelectedTrackFXFloatCmdId) return 0;
+
+        static gaccel_register_t accelerator2;
+        accelerator2.accel.cmd = enz_toggleSelectedTrackFXFloatCmdId;
+        accelerator2.desc = "ENZ: Toggle float for selected track FX";
+        plugin_register("gaccel", &accelerator2);
 
         // Register the command hook
         plugin_register("hookcommand", (void*)hook_command);
         
-        ShowConsoleMsg("ReaperMutedTracksToggle plugin loaded successfully!\n");
+        ShowConsoleMsg("IAN's Muted Track Toggler plugin loaded!\n");
 
         return 1;
     }

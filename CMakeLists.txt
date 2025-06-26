@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
-project(ReaperMutedTracksToggle)
+project(enz_ReaperTools)
 
 # Set C++ standard
 set(CMAKE_CXX_STANDARD 11)
@@ -48,14 +48,14 @@ elseif(WIN32)
 endif()
 
 # Create the shared library (plugin) with explicit name
-add_library(ReaperMutedTracksToggle SHARED ${SOURCE_FILES})
+add_library(enz_ReaperTools SHARED ${SOURCE_FILES})
 
 # Link platform-specific libraries
 if(APPLE)
-    target_link_libraries(ReaperMutedTracksToggle ${LINK_LIBS})
+    target_link_libraries(enz_ReaperTools ${LINK_LIBS})
 endif()
 
 # Installation steps (optional, but good practice)
-install(TARGETS ReaperMutedTracksToggle
+install(TARGETS enz_ReaperTools
     LIBRARY DESTINATION ${CMAKE_BINARY_DIR}
 ) 
