@@ -98,12 +98,6 @@ jobs:
     
     - name: Update ReaPack Index
       run: python .github/scripts/update_reapack_index.py
-    
-    - name: Push Updated Index
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        branch: gh-pages
-        github_token: ${{ secrets.GITHUB_TOKEN }}
 
   push-to-publish-repo:
     needs: create-release
