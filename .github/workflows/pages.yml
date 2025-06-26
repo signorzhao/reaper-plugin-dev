@@ -27,6 +27,11 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
         
+      - name: Create .nojekyll file
+        run: |
+          touch docs/.nojekyll
+          echo "Disabled Jekyll processing" > docs/.nojekyll
+        
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
