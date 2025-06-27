@@ -26,13 +26,14 @@ double (*TrackFX_GetParam)(MediaTrack* track, int fx, int param, double* minval,
 bool (*TrackFX_GetOffline)(MediaTrack* track, int fx);
 bool (*TrackFX_GetOpen)(MediaTrack* track, int fx);
 void* (*TrackFX_GetFloatingWindow)(MediaTrack* track, int fx);
-
+const char* (*GetTrackName)(MediaTrack* track, char* buf, int buf_sz);
 // Global variable for our command ID
 static int enz_toggleMutedTracksCmdId = 0;
 static int enz_toggleSelectedTrackFXFloatCmdId = 0;
 
 // Helper function to check if all items on a track are muted
-bool AllItemsAreMuted(MediaTrack* track)
+// 跟踪隐藏状态
+static bool tracks_are_hidden = false;bool AllItemsAreMuted(MediaTrack* track)
 {
     const int num_items = CountTrackMediaItems(track);
     if (num_items == 0)
@@ -66,34 +67,32 @@ bool IsTrackEffectivelyMuted(MediaTrack* track)
 
 void ToggleMutedTracksVisibility()
 {
-    // First, determine if we should hide or show tracks.
-    // Scan for any visible, "effectively muted" tracks.
-    bool muted_tracks_are_visible = false;
-    const int num_tracks = CountTracks(nullptr);
-    for (int i = 0; i < num_tracks; i++)
-    {
-        MediaTrack* track = GetTrack(nullptr, i);
-        if (GetMediaTrackInfo_Value(track, "B_SHOWINTCP") > 0.0 && IsTrackEffectivelyMuted(track))
-        {
-            muted_tracks_are_visible = true;
-            break;
-        }
-    }
-
     Undo_BeginBlock();
 
-    if (muted_tracks_are_visible)
+    const int num_tracks = CountTracks(nullptr);
+
+    if (!tracks_are_hidden)
     {
         // Action: Hide all effectively muted tracks
         for (int i = 0; i < num_tracks; i++)
         {
             MediaTrack* track = GetTrack(nullptr, i);
+            
+            // 检查轨道名，如果为 "lol" 则跳过
+            char track_name[256];
+            GetTrackName(track, track_name, sizeof(track_name));
+            if (strcmp(track_name, "lol") == 0)
+            {
+                continue; // 跳过名为 "lol" 的轨道
+            }
+            
             if (IsTrackEffectivelyMuted(track))
             {
                 SetMediaTrackInfo_Value(track, "B_SHOWINTCP", 0.0);
                 SetMediaTrackInfo_Value(track, "B_SHOWINMIXER", 0.0);
             }
         }
+        tracks_are_hidden = true;
     }
     else
     {
@@ -101,15 +100,24 @@ void ToggleMutedTracksVisibility()
         for (int i = 0; i < num_tracks; i++)
         {
             MediaTrack* track = GetTrack(nullptr, i);
+            
+            // 检查轨道名，如果为 "lol" 则跳过
+            char track_name[256];
+            GetTrackName(track, track_name, sizeof(track_name));
+            if (strcmp(track_name, "lol") == 0)
+            {
+                continue; // 跳过名为 "lol" 的轨道
+            }
+            
             SetMediaTrackInfo_Value(track, "B_SHOWINTCP", 1.0);
             SetMediaTrackInfo_Value(track, "B_SHOWINMIXER", 1.0);
         }
+        tracks_are_hidden = false;
     }
 
     Undo_EndBlock("enz_Toggle visibility of muted tracks", -1);
     TrackList_AdjustWindows(true); // Update both TCP and MCP
 }
-
 // === 新功能实现 ===
 // 智能切换：如果大部分FX悬浮窗口是关闭的，就全部打开；如果大部分是打开的，就全部关闭
 void Enz_ToggleSelectedTrackFXFloat(bool force_open)
@@ -250,7 +258,7 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
         GET_FUNC(TrackFX_GetOffline);
         GET_FUNC(TrackFX_GetOpen);
         GET_FUNC(TrackFX_GetFloatingWindow);
-
+        GET_FUNC(GetTrackName);
         // Register the action
         enz_toggleMutedTracksCmdId = plugin_register("command_id", (void*)"enz_ToggleMutedTracksVisibility");
         if (!enz_toggleMutedTracksCmdId) return 0;
