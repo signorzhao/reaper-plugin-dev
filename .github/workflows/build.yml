@@ -158,13 +158,22 @@ jobs:
       - name: 列出新版本目录内容
         run: ls -l publish_repo/releases/${{ steps.get_version.outputs.version }}
 
+      - name: 验证 token
+        run: |
+          if [ -z "${{ secrets.reapack-publish-token }}" ]; then
+            echo "Error: reapack-publish-token secret is empty"
+            exit 1
+          fi
+          echo "Token is set (length: ${#REAPACK_TOKEN})"
+
       - name: 提交并推送到发布库
         run: |
           cd publish_repo
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           # 使用 token 设置远程 URL 认证
-          git remote set-url origin https://x-access-token:${{ secrets.reapack-publish-token }}@github.com/signorzhao/reapack_repo
+          REAPACK_TOKEN="${{ secrets.reapack-publish-token }}"
+          git remote set-url origin "https://x-access-token:${REAPACK_TOKEN}@github.com/signorzhao/reapack_repo"
           git add .
           git commit -m "Auto publish ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
           git push 
