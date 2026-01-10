@@ -142,6 +142,7 @@ jobs:
         with:
           repository: signorzhao/reapack_repo
           path: publish_repo
+          persist-credentials: false
 
       - name: 复制 DLL 到发布库
         run: |
@@ -171,6 +172,9 @@ jobs:
           cd publish_repo
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
+          # 清除可能缓存的凭据
+          git config --unset --local credential.helper || true
+          git config --unset --local http.https://github.com/.extraheader || true
           # 使用 token 设置远程 URL 认证
           REAPACK_TOKEN="${{ secrets.PUBLISH_TOKEN }}"
           git remote set-url origin "https://x-access-token:${REAPACK_TOKEN}@github.com/signorzhao/reapack_repo"
