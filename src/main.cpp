@@ -1,8 +1,6 @@
 #include "reaper_plugin.h"
 
 // Define pointers for REAPER API functions
-// test: trigger auto publish
-void (*ShowConsoleMsg)(const char *msg);
 int (*CountTracks)(ReaProject* proj);
 MediaTrack* (*GetTrack)(ReaProject* proj, int trackidx);
 double (*GetMediaTrackInfo_Value)(MediaTrack* track, const char* parmname);
@@ -228,7 +226,6 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
         // Load all necessary API functions
         #define GET_FUNC(name) *(void **)&name = rec->GetFunc(#name)
-        GET_FUNC(ShowConsoleMsg);
         GET_FUNC(CountTracks);
         GET_FUNC(GetTrack);
         GET_FUNC(GetMediaTrackInfo_Value);
@@ -275,8 +272,6 @@ REAPER_PLUGIN_DLL_EXPORT int REAPER_PLUGIN_ENTRYPOINT(REAPER_PLUGIN_HINSTANCE hI
 
         // Register the command hook
         plugin_register("hookcommand", (void*)hook_command);
-        
-        ShowConsoleMsg("enz_ReaperTools plugin loaded!\n");
 
         return 1;
     }
