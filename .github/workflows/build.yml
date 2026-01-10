@@ -87,11 +87,14 @@ jobs:
     - name: Create Tag (if not exists)
       run: |
         git fetch --tags
-        if ! git rev-parse ${{ steps.version.outputs.version }} >/dev/null 2>&1; then
+        # 检查本地和远程是否都存在该标签
+        if ! git rev-parse ${{ steps.version.outputs.version }} >/dev/null 2>&1 && ! git ls-remote --tags origin | grep -q "refs/tags/${{ steps.version.outputs.version }}$"; then
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git tag ${{ steps.version.outputs.version }}
           git push origin ${{ steps.version.outputs.version }}
+        else
+          echo "Tag ${{ steps.version.outputs.version }} already exists locally or remotely, skipping tag creation."
         fi
     
     - name: Create Release
