@@ -13,9 +13,14 @@ on:
 
 jobs:
   build-windows:
-    runs-on: windows-latest
+    runs-on: windows-2022
     steps:
     - uses: actions/checkout@v4
+
+    - name: Setup MSVC developer command prompt
+      uses: ilammy/msvc-dev-cmd@v1
+      with:
+        arch: x64
     
     - name: Setup CMake
       uses: jwlawson/actions-setup-cmake@v1.13
@@ -23,7 +28,7 @@ jobs:
         cmake-version: '3.25.0'
     
     - name: Configure CMake
-      run: cmake -B build -G "Visual Studio 17 2022" -A x64
+      run: cmake -B build -G "NMake Makefiles" -DCMAKE_BUILD_TYPE=Release
     
     - name: Build
       run: cmake --build build --config Release
@@ -32,7 +37,7 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: reaper_enz_ReaperTools-win64
-        path: build/Release/reaper_enz_ReaperTools.dll
+        path: build/reaper_enz_ReaperTools.dll
 
   build-macos:
     runs-on: macos-latest
@@ -117,17 +122,16 @@ jobs:
         name: enz_ucs_service-win64
         path: dist/
     
-    - name: Create Tag (if not exists)
+    - name: Create Tag
       run: |
         git fetch --tags
-        # 检查本地和远程是否都存在该标签
         if ! git rev-parse ${{ steps.version.outputs.version }} >/dev/null 2>&1 && ! git ls-remote --tags origin | grep -q "refs/tags/${{ steps.version.outputs.version }}$"; then
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git tag ${{ steps.version.outputs.version }}
           git push origin ${{ steps.version.outputs.version }}
         else
-          echo "Tag ${{ steps.version.outputs.version }} already exists locally or remotely, skipping tag creation."
+          echo "Tag already exists, skipping tag creation."
         fi
     
     - name: Create Release
@@ -211,24 +215,24 @@ jobs:
 
       - name: 验证 token
         run: |
-          if [ -z "${{ secrets.PUBLISH_TOKEN }}" ]; then
+          if [ -z "$PUBLISH_TOKEN" ]; then
             echo "Error: PUBLISH_TOKEN secret is empty"
             exit 1
           fi
-          REAPACK_TOKEN="${{ secrets.PUBLISH_TOKEN }}"
-          echo "Token is set (length: ${#REAPACK_TOKEN})"
+          echo "Token is set"
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
 
       - name: 提交并推送到发布库
         run: |
           cd publish_repo
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
-          # 清除可能缓存的凭据
           git config --unset --local credential.helper || true
           git config --unset --local http.https://github.com/.extraheader || true
-          # 使用 token 设置远程 URL 认证
-          REAPACK_TOKEN="${{ secrets.PUBLISH_TOKEN }}"
-          git remote set-url origin "https://x-access-token:${REAPACK_TOKEN}@github.com/signorzhao/reapack_repo"
+          git remote set-url origin "https://x-access-token:${PUBLISH_TOKEN}@github.com/signorzhao/reapack_repo"
           git add .
           git commit -m "Auto publish ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
           git push
+        env:
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
