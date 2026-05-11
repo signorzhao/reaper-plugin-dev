@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ENZ UCS Launcher</title>
+  <style>
+    :root { color-scheme: dark; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; background: #15181d; color: #f2f4f8; }
+    main { max-width: 720px; margin: 0 auto; padding: 36px 24px; }
+    h1 { font-size: 26px; margin: 0 0 18px; }
+    .panel { border: 1px solid #2b3340; border-radius: 8px; padding: 18px; background: #1b2028; }
+    .row { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 16px; }
+    button, a.button { border: 0; border-radius: 6px; background: #2f6fed; color: white; font-size: 16px; padding: 10px 14px; cursor: pointer; text-decoration: none; }
+    button.secondary { background: #3a4658; }
+    button.danger { background: #8f3545; }
+    button:disabled { opacity: .5; cursor: default; }
+    .muted { color: #aab4c3; }
+    code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color: #9fd3ff; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>ENZ UCS Launcher</h1>
+    <div class="panel">
+      <div id="status">正在检测本地后端...</div>
+      <p class="muted" id="hint"></p>
+      <div class="row">
+        <a class="button" id="openUi" href="http://127.0.0.1:8000/ui">打开主界面</a>
+        <button class="secondary" id="refresh">重新检测</button>
+        <button class="danger" id="shutdown">关闭后端</button>
+      </div>
+    </div>
+  </main>
+  <script>
+    const baseUrl = 'http://127.0.0.1:8000';
+    const statusEl = document.getElementById('status');
+    const hintEl = document.getElementById('hint');
+    const openUi = document.getElementById('openUi');
+    const shutdownBtn = document.getElementById('shutdown');
+
+    async function refresh() {
+      try {
+        const response = await fetch(baseUrl + '/health', {cache: 'no-store'});
+        const data = await response.json();
+        statusEl.textContent = `后端已运行：${data.version || 'unknown'}`;
+        hintEl.textContent = '可以打开主界面；如果浏览器关掉了，重新打开这个页面即可恢复入口。';
+        openUi.style.pointerEvents = 'auto';
+        openUi.style.opacity = '1';
+        shutdownBtn.disabled = false;
+      } catch (err) {
+        statusEl.textContent = '后端未运行';
+        hintEl.innerHTML = '请先运行 <code>scripts/start_ucs_service_macos.command</code> 或 Windows 启动器。普通 HTML 不能直接启动本机后端。';
+        openUi.style.pointerEvents = 'none';
+        openUi.style.opacity = '.5';
+        shutdownBtn.disabled = true;
+      }
+    }
+
+    async function shutdown() {
+      if (!confirm('关闭本地 UCS 后端服务？')) return;
+      try {
+        await fetch(baseUrl + '/api/v1/shutdown', {method: 'POST'});
+      } catch (err) {
+      } finally {
+        setTimeout(refresh, 500);
+      }
+    }
+
+    document.getElementById('refresh').addEventListener('click', refresh);
+    shutdownBtn.addEventListener('click', shutdown);
+    refresh();
+  </script>
+</body>
+</html>
