@@ -56,8 +56,35 @@ jobs:
         name: reaper_enz_ReaperTools-macos
         path: build/reaper_enz_ReaperTools.dylib
 
+  build-ucs-backend:
+    runs-on: windows-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install build dependencies
+      run: python -m pip install -r ucs_tool/backend/requirements-build.txt
+
+    - name: Build UCS backend exe
+      run: >
+        pyinstaller
+        --onefile
+        --name enz_ucs_service
+        --add-data "ucs_tool/backend/data;data"
+        ucs_tool/backend/ucs_service.py
+
+    - name: Upload UCS Backend
+      uses: actions/upload-artifact@v4
+      with:
+        name: enz_ucs_service-win64
+        path: dist/enz_ucs_service.exe
+
   create-release:
-    needs: [build-windows, build-macos]
+    needs: [build-windows, build-macos, build-ucs-backend]
     runs-on: ubuntu-latest
     if: github.event_name == 'push' || github.event_name == 'workflow_dispatch'
     steps:
@@ -83,6 +110,12 @@ jobs:
       with:
         name: reaper_enz_ReaperTools-macos
         path: dist/
+
+    - name: Download UCS Backend
+      uses: actions/download-artifact@v4
+      with:
+        name: enz_ucs_service-win64
+        path: dist/
     
     - name: Create Tag (if not exists)
       run: |
@@ -103,6 +136,7 @@ jobs:
         files: |
           dist/reaper_enz_ReaperTools.dll
           dist/reaper_enz_ReaperTools.dylib
+          dist/enz_ucs_service.exe
         generate_release_notes: true
         tag_name: ${{ steps.version.outputs.version }}
         name: Release ${{ steps.version.outputs.version }}
@@ -137,6 +171,12 @@ jobs:
           name: reaper_enz_ReaperTools-macos
           path: .
 
+      - name: 下载 UCS 后端
+        uses: actions/download-artifact@v4
+        with:
+          name: enz_ucs_service-win64
+          path: .
+
       - name: 克隆发布库
         uses: actions/checkout@v4
         with:
@@ -153,6 +193,16 @@ jobs:
         run: |
           cp reaper_enz_ReaperTools.dylib publish_repo/releases/${{ steps.get_version.outputs.version }}/
 
+      - name: 复制 UCS 工具到发布库
+        run: |
+          mkdir -p publish_repo/releases/${{ steps.get_version.outputs.version }}/ucs
+          cp enz_ucs_service.exe publish_repo/releases/${{ steps.get_version.outputs.version }}/ucs/
+          cp ucs_tool/scripts/enz_UCS_Auto_Rename_Selected_Items.lua publish_repo/releases/${{ steps.get_version.outputs.version }}/ucs/
+          cp ucs_tool/scripts/start_ucs_service_windows.bat publish_repo/releases/${{ steps.get_version.outputs.version }}/ucs/
+          cp .github/scripts/update_publish_index.py publish_repo/update_index.py
+          cd publish_repo
+          python update_index.py
+
       - name: 列出发布库目录
         run: ls -l publish_repo/releases
 
@@ -165,6 +215,7 @@ jobs:
             echo "Error: PUBLISH_TOKEN secret is empty"
             exit 1
           fi
+          REAPACK_TOKEN="${{ secrets.PUBLISH_TOKEN }}"
           echo "Token is set (length: ${#REAPACK_TOKEN})"
 
       - name: 提交并推送到发布库
@@ -180,4 +231,4 @@ jobs:
           git remote set-url origin "https://x-access-token:${REAPACK_TOKEN}@github.com/signorzhao/reapack_repo"
           git add .
           git commit -m "Auto publish ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
-          git push 
+          git push

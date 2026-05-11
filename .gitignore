@@ -7,3 +7,11 @@
 .idea/ 
 *.dylib
 CMakeCache.txt
+
+# UCS tool local artifacts
+ucs_tool/.venv-ucs/
+ucs_tool/config.json
+ucs_tool/backend/__pycache__/
+ucs_tool/backend/*.pyc
+ucs_tool/scripts/*.log
+ucs_tool/scripts/enz_ucs_debug.log
