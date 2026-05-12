@@ -154,6 +154,9 @@ jobs:
     needs: create-release
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout source repo
+        uses: actions/checkout@v4
+
       - name: 获取版本号
         id: get_version
         run: |
@@ -235,4 +238,4 @@ jobs:
           git commit -m "Auto publish ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
           git push
         env:
-          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
+          PUBLISH_TOKEN: $${{ secrets.PUBLISH_TOKEN }}
