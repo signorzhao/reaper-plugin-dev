@@ -238,4 +238,4 @@ jobs:
           git commit -m "Auto publish ${{ steps.get_version.outputs.version }}" || echo "No changes to commit"
           git push
         env:
-          PUBLISH_TOKEN: $${{ secrets.PUBLISH_TOKEN }}
+          PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
